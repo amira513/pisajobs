@@ -99,6 +99,10 @@ export default function Register() {
             fullWidth label="Password" type="password" name="password" onChange={handleChange}
             sx={{ mb: 2 }} required
           />
+            <TextField
+            fullWidth label="Conferma Password" type="password" name="password" onChange={handleChange}
+            sx={{ mb: 2 }} required
+          />
 
           <FormControl component="fieldset" sx={{ mb: 2 }}>
             <FormLabel>Seleziona tipo utente</FormLabel>

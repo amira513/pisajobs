@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography, Paper, Stack, Button, CircularProgress, Alert, List, ListItem, ListItemText } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function DashboardUser() {
   const [savedJobs, setSavedJobs] = useState([]);
@@ -59,7 +60,8 @@ export default function DashboardUser() {
       </Typography>
 
       <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
-        <Button variant="contained" href="/">🔍 Trova Lavori</Button>
+          <Button variant="contained" component={Link} to="/trovalavoro"> 🔍 Trova Lavori
+  </Button>
         <Button variant="outlined" href="/">❤️ Lavori Salvati</Button>
       </Stack>
 

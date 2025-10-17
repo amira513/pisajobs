@@ -23,7 +23,7 @@ export default function Navbar({ user, setUser }) {
             alt="Logo Pisa Jobs"
             sx={{ height: 60, width: 70, mr: 1 }}
           />
-          <Typography variant="h6">Pisa Jobs</Typography>
+          <Typography variant="h6">PisaJobs</Typography>
         </Box>
 
         <Box>

@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import DashboardUser from './pages/DashboardUser';
 import DashboardEmployer from './pages/DashboardEmployer';
+import TrovaLavoro from './pages/TrovaLavoro';
 
 
 // ProtectedRoute checks if user is logged in and has the correct role
@@ -55,7 +56,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login setUser={setUser} />} />
               <Route path="/register" element={<Register />} />
-
+              
               {/* Dashboard for students/workers */}
               <Route
                 path="/dashboard/user"
@@ -78,6 +79,7 @@ export default function App() {
 
               {/* Redirect unknown routes to home */}
               <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="/trovalavoro" element={<TrovaLavoro />} />
             </Routes>
           </Box>
 

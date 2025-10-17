@@ -16,7 +16,9 @@ export default function Home() {
           Scopri le opportunità di lavoro a Pisa in un click
         </Typography>
         <Typography variant="h6" sx={{ mb: 4, color: 'text.secondary' }}>
-          PisaJobs è la piattaforma che mette in contatto giovani talenti e studenti con lavori locali, flessibili e immediati. Offriamo un’esperienza semplice e rapida per trovare opportunità a Pisa, rafforzando il legame tra studenti e piccole imprese locali.
+          PisaJobs è la piattaforma che connette persone e imprese a Pisa con opportunità di lavoro reali, flessibili e immediate.
+Che tu stia cercando un lavoretto, un impiego stabile o una collaborazione professionale, qui trovi tutto in un solo posto.
+Semplice da usare, pensato per la comunità, utile per studenti, professionisti e aziende locali.
         </Typography>
         <Button component={Link} to="/login" variant="contained" sx={{ mr: 2, px: 4, py: 1.5 }}>
           Login
