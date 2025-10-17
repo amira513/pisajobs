@@ -9,7 +9,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import DashboardUser from './pages/DashboardUser';
 import DashboardEmployer from './pages/DashboardEmployer';
-import { useNavigate } from 'react-router-dom';
+
 
 // ProtectedRoute checks if user is logged in and has the correct role
 function ProtectedRoute({ user, children, role }) {
@@ -40,19 +40,15 @@ export default function App() {
     }
   }, [user]);
 
-  // Simple logout clears user state and localStorage
-  const handleLogout = () => {
-    setUser(null);
-    navigate('/'); 
-  };
+
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          {/* Pass user and logout handler to Navbar */}
-          <Navbar user={user} onLogout={handleLogout} />
+          
+          <Navbar user={user} setUser={setUser} />
 
           <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             <Routes>

@@ -1,12 +1,14 @@
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../assets/PisaJobs.png'; // importa logo
+import logo from '../assets/logo.png';
+
 
 export default function Navbar({ user, setUser }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     setUser(null);
     navigate('/');
   };
@@ -36,7 +38,8 @@ export default function Navbar({ user, setUser }) {
               <Button component={Link} to={user.is_employer ? "/dashboard/employer" : "/dashboard/user"} color="inherit">
                 Dashboard
               </Button>
-              <Button component={Link} to="/" color="inherit">Logout</Button>
+              <Button onClick={handleLogout} color="inherit">Logout</Button>
+
             </>
           )}
         </Box>
