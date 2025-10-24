@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, Job, Application, SavedJob, Notification
+from .models import CustomUser, Job, Application, SavedJob, Notification, Message, Conversation
 
 # Admin CustomUser
 @admin.register(CustomUser)
@@ -82,3 +82,26 @@ class NotificationAdmin(admin.ModelAdmin):
     list_display = ('user', 'message', 'read', 'created_at')
     list_filter = ('read',)
     search_fields = ('user__username', 'message')
+
+# Admin Messages
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('sender', 'receiver', 'job', 'read', 'created_at')
+    list_filter = ('read', 'created_at')
+    search_fields = ('sender__username', 'receiver__username', 'content', 'job__title')
+    raw_id_fields = ('sender', 'receiver', 'job')
+    date_hierarchy = 'created_at'
+
+# Admin Conversations
+@admin.register(Conversation)
+class ConversationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'job', 'participants_list', 'created_at', 'updated_at')
+    list_filter = ('created_at', 'updated_at')
+    search_fields = ('job__title', 'participants__username')
+    filter_horizontal = ('participants',)
+    raw_id_fields = ('job',)
+    date_hierarchy = 'created_at'
+    
+    def participants_list(self, obj):
+        return ", ".join([p.username for p in obj.participants.all()])
+    participants_list.short_description = 'Partecipanti'

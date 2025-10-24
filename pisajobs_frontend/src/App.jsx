@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ThemeProvider, CssBaseline, Box } from '@mui/material';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import theme from './theme';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -29,6 +30,8 @@ export default function App() {
     const storedUser = localStorage.getItem('user');
     return storedUser ? JSON.parse(storedUser) : null;
   });
+
+
 
   // Keep localStorage in sync when user changes
   useEffect(() => {
@@ -62,7 +65,7 @@ export default function App() {
                 path="/dashboard/user"
                 element={
                   <ProtectedRoute user={user} role={false}>
-                    <DashboardUser user={user} />
+                    <DashboardUser user={user}/>
                   </ProtectedRoute>
                 }
               />
@@ -72,7 +75,7 @@ export default function App() {
                 path="/dashboard/employer"
                 element={
                   <ProtectedRoute user={user} role={true}>
-                    <DashboardEmployer user={user} />
+                    <DashboardEmployer user={user}/>
                   </ProtectedRoute>
                 }
               />

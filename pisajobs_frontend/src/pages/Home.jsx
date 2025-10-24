@@ -7,7 +7,7 @@ export default function Home() {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      flex: 1,           // occupa lo spazio flessibile tra navbar e footer
+      flex: 1,          
       bgcolor: '#FAF8F6',
       px: 2
     }}>

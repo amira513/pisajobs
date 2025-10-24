@@ -52,3 +52,25 @@ class Notification(models.Model):
 
     def __str__(self):
         return f"Notification for {self.user.username} - Read: {self.read}"
+
+# Messaggi tra utenti
+class Message(models.Model):
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='sent_messages')
+    receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='received_messages')
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='messages', null=True, blank=True)
+    content = models.TextField()
+    read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Message from {self.sender.username} to {self.receiver.username}"
+
+# Conversazioni (per raggruppare i messaggi)
+class Conversation(models.Model):
+    participants = models.ManyToManyField(CustomUser, related_name='conversations')
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='conversations', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Conversation for job: {self.job.title if self.job else 'General'}"

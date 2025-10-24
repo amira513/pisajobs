@@ -64,10 +64,10 @@ export default function Register() {
       const data = await res.json();
       console.log('Registration successful:', data);
 
-      // ✅ Mostra messaggio di successo
+      // Mostra messaggio di successo
       setSuccess('Registrazione avvenuta con successo! Verrai reindirizzato...');
 
-      // ⏳ Aspetta 2 secondi, poi naviga
+      // Aspetta 2 secondi, poi naviga
       setTimeout(() => {
         navigate('/login');
       }, 2000);

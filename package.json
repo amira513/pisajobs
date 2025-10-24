@@ -1,0 +1,8 @@
+{
+"scripts": {
+    "dev": "concurrently \"npm run dev --prefix pisajobs_frontend\" \"cd pisajobs_backend && python3 manage.py runserver\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

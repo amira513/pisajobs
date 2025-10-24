@@ -26,20 +26,20 @@ export default function Login({ setUser }) {
         const errorData = await res.json();
         setError(errorData.detail || 'Credenziali non valide');
         return;
-      }
+      } 
 
       const data = await res.json();
 
-      // ✅ Salva token
+      // Salva token
       localStorage.setItem('accessToken', data.access);
       localStorage.setItem('refreshToken', data.refresh);
       localStorage.setItem('token', data.access); // per compatibilità con Dashboard
       localStorage.setItem('user', JSON.stringify(data));
 
-      // ✅ Passa utente al context/app
+      // Passa utente al context/app
       if (setUser) setUser(data);
 
-      // ✅ Redirect basato su tipo utente
+      // Redirect basato su tipo utente
       if (data.is_employer) {
         navigate('/dashboard/employer');
       } else {
